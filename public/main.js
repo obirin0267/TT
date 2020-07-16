@@ -8,25 +8,25 @@ const name = document.getElementById("name");
 
 let username='';
 nameform.addEventListener('submit', function(event){
-  if(name.value!==''){
-  username = name.value;
-  nameform.style.display ="none";
-  form.style.display ="block";
-
-  socketio.emit('signin');
-
-  const msg = {msg: username + ' さんが参加しました。', name: 'システム'};
-  socketio.emit('message', msg);
-}
-
-event.preventDefault();
+  if(name.value!==''){ 
+    username = name.value;
+    nameform.style.display ="none";
+    form.style.display ="block";
+  
+    socketio.emit('signin');
+  
+    const msg = {msg: username + ' さんが参加しました。', name: 'システム'};
+    socketio.emit('message', msg);
+  }
+  
+  event.preventDefault();
 })
 
 form.addEventListener('submit', function(event){
   if(input.value!==''){
-  const msg = {msg: input.value, name: username};)
-  socketio.emit('message', msg);
-  input.value='';
+    const msg = {msg: input.value, name: username};
+    socketio.emit('message', msg);
+    input.value='';
   }
   event.preventDefault();
 })
@@ -58,6 +58,7 @@ function displayMessage(msg){
     dd2.append(formatDate(new Date(msg.date), 'yyyy/MM/dd HH:mm:ss'));dd2.append(new Date(msg.date));
     chats.append(dd2);
   }
+
   function formatDate (date, format) {
     format = format.replace(/yyyy/g, date.getFullYear());
     format = format.replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2));
