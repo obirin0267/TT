@@ -55,7 +55,7 @@ function displayMessage(msg){
     chats.append(dt);
     dd.append(msg.msg);
     chats.append(dd);
-    dd2.append(formatDate(new Date(msg.date), 'yyyy/MM/dd HH:mm:ss'));dd2.append(new Date(msg.date));
+    dd2.append(formatDate(new Date(msg.date), 'yyyy/MM/dd HH:mm:ss'));
     chats.append(dd2);
   }
 
