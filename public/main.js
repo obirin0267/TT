@@ -36,18 +36,18 @@ socketio.on('message',function(msg){
     // まだ参加していなかったら、チャットを表示しない
     return;
   }
-  const dt = document.createElement("dt");
-  const dd = document.createElement("dd");
-  dt.append(msg.name);
-  chats.append(dt);
-  dd.append(msg.msg);
-  chats.append(dd);
+  displayMessage(msg);
 });
 
 // 参加時に過去のメッセージを受け取る
 socketio.on('signin',function(msgs){
   for(let i=0;i<msgs.length;i++){
     const msg = msgs[i];
+    displayMessage(msg);
+  }
+});
+
+function displayMessage(msg){
     const dt = document.createElement("dt");
     const dd = document.createElement("dd");
     dt.append(msg.name);
@@ -55,4 +55,3 @@ socketio.on('signin',function(msgs){
     dd.append(msg.msg);
     chats.append(dd);
   }
-});
